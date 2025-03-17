@@ -15,16 +15,12 @@ export const checkSchedulesConflict = async (
 ): Promise<boolean> => {
   try {
     if (!dayjs(starton).isValid() || !dayjs(finishedon).isValid()) {
-      console.error("⛔ Data inválida detectada:", starton, finishedon);
+      console.error("Data inválida detectada:", starton, finishedon);
       return true;
     }
 
     const formattedStarton = dayjs(starton).format("YYYY-MM-DD HH:mm:ss");
     const formattedFinishedon = dayjs(finishedon).format("YYYY-MM-DD HH:mm:ss");
-
-    console.log(
-      `🔍 Verificando conflito: ${formattedStarton} - ${formattedFinishedon}`
-    );
 
     const query = `
   SELECT id FROM scheduled_time 
@@ -58,7 +54,7 @@ export const checkSchedulesConflict = async (
 
     return (rows as any[]).length > 0;
   } catch (error) {
-    console.error("❌ Erro ao verificar conflitos de horário:", error);
+    console.error("Erro ao verificar conflitos de horário:", error);
     return true;
   }
 };

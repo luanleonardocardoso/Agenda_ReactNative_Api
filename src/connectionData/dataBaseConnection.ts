@@ -1,14 +1,6 @@
 import * as mysql from "mysql2/promise";
 import "dotenv/config";
 
-console.log("🔍 Configurações do banco carregadas:");
-console.log({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-});
-
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -25,10 +17,10 @@ const pool = mysql.createPool({
 (async () => {
   try {
     const connection = await pool.getConnection();
-    console.log("✅ Banco de dados conectado com sucesso!");
+    console.log("Banco de dados conectado com sucesso!");
     connection.release();
   } catch (error) {
-    console.error("❌ Erro ao conectar ao banco de dados:", error);
+    console.error("Erro ao conectar ao banco de dados:", error);
     process.exit(1);
   }
 })();

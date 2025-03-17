@@ -47,7 +47,7 @@ scheduledTime.get("/", async (req: Request, res: Response) => {
 
     res.json({ success: true, data: rows });
   } catch (error) {
-    console.error("❌ Erro ao buscar horários agendados:", error);
+    console.error("Erro ao buscar horários agendados:", error);
     res
       .status(500)
       .json({ success: false, message: "Erro ao buscar horários agendados" });

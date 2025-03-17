@@ -37,7 +37,7 @@ deleteSchedule.delete("/", async (req: Request, res: Response) => {
 
     res.json({ success: true, message: "Agendamento deletado com sucesso." });
   } catch (error) {
-    console.error("❌ Erro ao deletar o horário agendado:", error);
+    console.error("Erro ao deletar o horário agendado:", error);
     res
       .status(500)
       .json({ success: false, message: "Erro ao deletar o horário agendado." });
